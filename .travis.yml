@@ -37,6 +37,10 @@ jobs:
       arch: amd64
       before_install:
         - make travis-setup
+      install:
+        - wget https://storage.googleapis.com/pub/gsutil.tar.gz
+        - tar xfz gsutil.tar.gz -C $HOME
+        - export PATH=${PATH}:$HOME/gsutil
       script:
         - make integration-test-layers
     - name: integration-test-layers
@@ -73,5 +77,9 @@ jobs:
       arch: arm64
       before_install:
         - make travis-setup
+      install:
+        - wget https://storage.googleapis.com/pub/gsutil.tar.gz
+        - tar xfz gsutil.tar.gz -C $HOME
+        - export PATH=${PATH}:$HOME/gsutil
       script:
         - make integration-test-misc
