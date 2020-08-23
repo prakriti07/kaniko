@@ -15,10 +15,18 @@
 
 set -ex
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-chmod +x kubectl
-sudo mv kubectl /usr/local/bin/
-kubectl version --client
+if [ "$(uname -m)" == "aarch64" ]
+then
+  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/arm64/kubectl
+  chmod +x kubectl
+  sudo mv kubectl /usr/local/bin/
+  kubectl version --client
+else
+  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  chmod +x kubectl
+  sudo mv kubectl /usr/local/bin/
+  kubectl version --client
+fi
 
 # conntrack is required for minikube 1.19 and higher for none driver
 if ! conntrack --version &>/dev/null; then
@@ -27,9 +35,16 @@ if ! conntrack --version &>/dev/null; then
   sudo apt-get -qq -y install conntrack
 fi
 
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-chmod +x minikube
-sudo mv minikube /usr/local/bin/
+if [ "$(uname -m)" == "aarch64" ]
+then
+  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
+  chmod +x minikube
+  sudo mv minikube /usr/local/bin/
+else
+  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  chmod +x minikube
+  sudo mv minikube /usr/local/bin/
+fi
 
 sudo apt-get update
 sudo apt-get install -y liblz4-tool
