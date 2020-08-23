@@ -10,19 +10,52 @@ go_import_path: github.com/GoogleContainerTools/kaniko
 jobs:
   include:
     - name: unit-test
+      arch: amd64
       script:
         - make test
+    - name: unit-test
+      arch: arm64
+      script:
+        - make test    
     - name: integration-test-run
+      arch: amd64
       before_install:
         - make travis-setup
       script:
         - make integration-test-run
+    - name: integration-test-run
+      arch: arm64
+      before_install:
+        - make travis-setup
+      install:
+        - wget https://storage.googleapis.com/pub/gsutil.tar.gz
+        - tar xfz gsutil.tar.gz -C $HOME
+        - export PATH=${PATH}:$HOME/gsutil
+      script:
+        - make integration-test-run
     - name: integration-test-layers
+      arch: amd64
+      before_install:
+        - make travis-setup
+      script:
+        - make integration-test-layers
+    - name: integration-test-layers
+      arch: arm64
       before_install:
         - make travis-setup
       script:
         - make integration-test-layers
     - name: build-image-and-k8s-integration-test
+      arch: amd64
+      before_install:
+        - make travis-setup
+        - make minikube-setup
+      script:
+        - make images
+        - make push
+        - make integration-test-k8s
+    - name: build-image-and-k8s-integration-test
+      arch: arm64
       before_install:
         - make travis-setup
         - make minikube-setup
@@ -31,6 +64,13 @@ jobs:
         - make push
         - make integration-test-k8s
     - name: integration-test-misc
+      arch: amd64
+      before_install:
+        - make travis-setup
+      script:
+        - make integration-test-misc
+    - name: integration-test-misc
+      arch: arm64
       before_install:
         - make travis-setup
       script:
