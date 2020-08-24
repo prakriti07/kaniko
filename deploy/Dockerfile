@@ -24,9 +24,9 @@ RUN tar --no-same-owner -C /usr/local/bin/ -xvzf /usr/local/bin/docker-credentia
 RUN go get -u github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cli/docker-credential-ecr-login
 RUN make -C /go/src/github.com/awslabs/amazon-ecr-credential-helper linux-arm64
 # ACR docker credential helper
-ADD https://drive.google.com/file/d/1ow-McXTZzCH7qvCl976M0Z-eVR5G8X8j/view?usp=sharing /usr/local/bin
+ADD https://drive.google.com/file/d/1qaWn2on0Cybe9xIkNyBL4ddEziUoGi5N/view?usp=sharing /usr/local/bin
 #RUN chmod 777 ./docker-credential-acr-linux-arm64.tar.gz
-RUN tar --no-same-owner -C /usr/local/bin/ -xvzf ./docker-credential-acr-linux-arm64.tar.gz
+#RUN tar --no-same-owner -C /usr/local/bin/ -xvzf ./docker-credential-acr-linux-arm64.tar.gz
 # Add .docker config dir
 RUN mkdir -p /kaniko/.docker
 
