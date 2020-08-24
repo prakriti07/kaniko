@@ -25,8 +25,8 @@ RUN go get -u github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cli/dock
 RUN make -C /go/src/github.com/awslabs/amazon-ecr-credential-helper linux-arm64
 # ACR docker credential helper
 #ADD https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-aarch64.tar.gz /usr/local/bin
-RUN chmod 777 ./docker-credential-acr-linux-arm64.tar.gz
-RUN tar --no-same-owner -C /usr/local/bin/ -xvzf ./docker-credential-acr-linux-arm64.tar.gz
+#RUN chmod 777 ./docker-credential-acr-linux-arm64.tar.gz
+#RUN tar --no-same-owner -C /usr/local/bin/ -xvzf ./docker-credential-acr-linux-arm64.tar.gz
 # Add .docker config dir
 RUN mkdir -p /kaniko/.docker
 
@@ -37,7 +37,7 @@ FROM scratch
 COPY --from=0 /go/src/github.com/GoogleContainerTools/kaniko/out/executor /kaniko/executor
 COPY --from=0 /usr/local/bin/docker-credential-gcr /kaniko/docker-credential-gcr
 COPY --from=0 /go/src/github.com/awslabs/amazon-ecr-credential-helper/bin/linux-arm64/docker-credential-ecr-login /kaniko/docker-credential-ecr-login
-COPY --from=0 /usr/local/bin/docker-credential-acr-linux /kaniko/docker-credential-acr
+#COPY --from=0 /usr/local/bin/docker-credential-acr-linux /kaniko/docker-credential-acr
 COPY files/ca-certificates.crt /kaniko/ssl/certs/
 COPY --from=0 /kaniko/.docker /kaniko/.docker
 COPY files/nsswitch.conf /etc/nsswitch.conf
