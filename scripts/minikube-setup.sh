@@ -56,8 +56,7 @@ then
 	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main restricted universe multiverse"
 	sudo apt-get update
 	sudo apt-get install linux-headers-`uname -r`
-	sudo apt-get install --reinstall linux-image-`uname -r`
-	sudo service enable kubelet
+	sudo apt-get install --reinstall linux-image-`uname -r
 fi
 
 sudo minikube start --vm-driver=none
