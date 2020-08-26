@@ -58,6 +58,15 @@ then
 	sudo apt-get install linux-headers-`uname -r`
 	sudo apt-get install --reinstall linux-image-`uname -r`
 	sudo apt-get install socat
+	modprobe overlay
+	modprobe br_netfilter
+	cp ./kubernetes-cri.conf /etc/sysctl.d/99-kubernetes-cri.conf
+	sysctl --system
+	export VERSION=1.17
+	export OS=xUbuntu_18.04
+	./ins.sh
+	apt-get update
+	apt-get install cri-o cri-o-runc
 fi
 
 sudo minikube start --vm-driver=none
