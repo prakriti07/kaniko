@@ -59,19 +59,19 @@ then
 	sudo apt-get install linux-headers-`uname -r`
 	sudo apt-get install --reinstall linux-image-`uname -r`
 	sudo apt-get install socat
-	modprobe overlay
-	modprobe br_netfilter
-	sudo chmod 777 ./kubernetes-cri.conf
-	sudo cp ./kubernetes-cri.conf /etc/sysctl.d/99-kubernetes-cri.conf
-	sysctl --system
-	export VERSION=1.17:1.17.3
-	export OS=xUbuntu_18.04
-	sudo chmod 777 ./ins.sh
-	sudo ./ins.sh
-	sudo cat /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-	sudo cat /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
-	sudo apt-get update
-	sudo apt-get -y install cri-o cri-o-runc
+	#modprobe overlay
+	#modprobe br_netfilter
+	#sudo chmod 777 ./kubernetes-cri.conf
+	#sudo cp ./kubernetes-cri.conf /etc/sysctl.d/99-kubernetes-cri.conf
+	#sysctl --system
+	#export VERSION=1.17:1.17.3
+	#export OS=xUbuntu_18.04
+	#sudo chmod 777 ./ins.sh
+	#sudo ./ins.sh
+	#sudo cat /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+	#sudo cat /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
+	#sudo apt-get update
+	#sudo apt-get -y install cri-o cri-o-runc
 fi
 
 sudo minikube start --vm-driver=none
