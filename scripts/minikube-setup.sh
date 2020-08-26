@@ -60,10 +60,12 @@ then
 	sudo apt-get install socat
 	modprobe overlay
 	modprobe br_netfilter
-	cp ./kubernetes-cri.conf /etc/sysctl.d/99-kubernetes-cri.conf
+	sudo chmod 777 ./kubernetes-cri.conf
+	sudo cp ./kubernetes-cri.conf /etc/sysctl.d/99-kubernetes-cri.conf
 	sysctl --system
 	export VERSION=1.17
 	export OS=xUbuntu_18.04
+	sudo chmod 777 ./ins.sh
 	./ins.sh
 	apt-get update
 	apt-get install cri-o cri-o-runc
