@@ -32,6 +32,7 @@ jobs:
         - tar xfz gsutil.tar.gz -C $HOME
         - export PATH=${PATH}:$HOME/gsutil
       script:
+        - file /usr/local/bin/container-diff
         - make integration-test-run
     - name: integration-test-layers
       arch: amd64
