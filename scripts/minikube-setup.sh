@@ -68,8 +68,8 @@ then
 	export OS=xUbuntu_18.04
 	sudo chmod 777 ./ins.sh
 	sudo ./ins.sh
-	apt-get update
-	apt-get install cri-o cri-o-runc
+	sudo apt-get update
+	sudo apt-get -y install cri-o cri-o-runc
 fi
 
 sudo minikube start --vm-driver=none
