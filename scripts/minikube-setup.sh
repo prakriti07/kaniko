@@ -57,6 +57,7 @@ then
 	sudo apt-get update
 	sudo apt-get install linux-headers-`uname -r`
 	sudo apt-get install --reinstall linux-image-`uname -r`
+	sudo apt-get install socat
 fi
 
 sudo minikube start --vm-driver=none
