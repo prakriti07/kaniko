@@ -68,6 +68,8 @@ then
 	export OS=xUbuntu_18.04
 	sudo chmod 777 ./ins.sh
 	sudo ./ins.sh
+	sudo cat /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+	sudo cat /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
 	sudo apt-get update
 	sudo apt-get -y install cri-o cri-o-runc
 fi
