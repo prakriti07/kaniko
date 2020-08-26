@@ -48,6 +48,16 @@ fi
 
 sudo apt-get update
 sudo apt-get install -y liblz4-tool
+if [ "$(uname -m)" == "aarch64" ]
+then
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-backports main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main restricted universe multiverse"
+	sudo apt-get update
+	sudo apt-get install linux-headers-`uname -r`
+	sudo apt-get install --reinstall linux-image-`uname -r`
+fi
 
 sudo minikube start --vm-driver=none
 sudo minikube status
