@@ -64,7 +64,7 @@ then
 	sudo chmod 777 ./kubernetes-cri.conf
 	sudo cp ./kubernetes-cri.conf /etc/sysctl.d/99-kubernetes-cri.conf
 	sysctl --system
-	export VERSION=1.17
+	export VERSION=1.17:1.17.3
 	export OS=xUbuntu_18.04
 	sudo chmod 777 ./ins.sh
 	sudo ./ins.sh
