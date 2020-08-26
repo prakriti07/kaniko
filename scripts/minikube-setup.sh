@@ -66,7 +66,7 @@ then
 	export VERSION=1.17
 	export OS=xUbuntu_18.04
 	sudo chmod 777 ./ins.sh
-	./ins.sh
+	sudo ./ins.sh
 	apt-get update
 	apt-get install cri-o cri-o-runc
 fi
