@@ -191,7 +191,7 @@ func TestRun(t *testing.T) {
 			dockerImage := GetDockerImage(config.imageRepo, dockerfile)
 			kanikoImage := GetKanikoImage(config.imageRepo, dockerfile)
 
-			fmt.Printf("Arch of containerdiff %s\n, file(containerDiff))
+			fmt.Printf("Arch of containerdiff %s\n", file(containerDiff))
 			diff := containerDiff(t, daemonPrefix+dockerImage, kanikoImage, "--no-cache")
 
 			expected := fmt.Sprintf(emptyContainerDiff, dockerImage, kanikoImage, dockerImage, kanikoImage)
