@@ -1,0 +1,2 @@
+[plugins.cri]
+systemd_cgroup = true
