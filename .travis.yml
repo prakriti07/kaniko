@@ -54,7 +54,6 @@ jobs:
       arch: amd64
       before_install:
         - make travis-setup
-        - sudo cp config.toml /etc/containerd/config.toml
         - make minikube-setup
       script:
         - make images
@@ -64,6 +63,7 @@ jobs:
       arch: arm64
       before_install:
         - make travis-setup
+        - sudo cp config.toml /etc/containerd/config.toml
         - make minikube-setup
       script:
         - make images
