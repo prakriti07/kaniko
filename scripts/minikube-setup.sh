@@ -61,7 +61,7 @@ then
 	sudo apt-get install socat
 	mkdir -p /etc/systemd/system/docker.service.d
 	sudo systemctl daemon-reload
-	systemctl restart docker
+	sudo systemctl restart docker
 	#sudo systemctl start kubelet
 	#modprobe overlay
 	#modprobe br_netfilter
