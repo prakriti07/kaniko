@@ -59,6 +59,7 @@ then
 	sudo apt-get install linux-headers-`uname -r`
 	sudo apt-get install --reinstall linux-image-`uname -r`
 	sudo apt-get install socat
+	sudo systemctl daemon-reload
 	sudo systemctl start kubelet
 	#modprobe overlay
 	#modprobe br_netfilter
