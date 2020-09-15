@@ -59,7 +59,6 @@ then
 	sudo apt-get install linux-headers-`uname -r`
 	sudo apt-get install --reinstall linux-image-`uname -r`
 	sudo apt-get install socat
-	sudo systemctl enable kubelet.service
 	#modprobe overlay
 	#modprobe br_netfilter
 	#sudo chmod 777 ./kubernetes-cri.conf
