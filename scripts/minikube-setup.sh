@@ -62,7 +62,6 @@ then
 	mkdir -p /etc/systemd/system/docker.service.d
 	sudo systemctl daemon-reload
 	sudo systemctl restart docker
-	sudo systemctl docker status
 	sudo swapoff -a
 	sudo systemctl start kubelet
 	#modprobe overlay
