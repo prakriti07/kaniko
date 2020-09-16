@@ -62,7 +62,7 @@ then
 	mkdir -p /etc/systemd/system/docker.service.d
 	sudo systemctl daemon-reload
 	sudo systemctl restart docker
-	#sudo systemctl start kubelet
+	sudo systemctl start kubelet
 	#modprobe overlay
 	#modprobe br_netfilter
 	#sudo chmod 777 ./kubernetes-cri.conf
